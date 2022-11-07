@@ -40,6 +40,13 @@ const CreateUser = () => {
                 <div className="sm:text-3xl text-2xl font-semibold text-center text-sky-600  mb-12">
                     Create User
                 </div>
+                <div className="back_to_user_btn_area text-right">
+                    <Link to="/users">
+                        <button type="button" className="py-2 px-4 my-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                            Show User Data
+                        </button>
+                    </Link>
+                </div>
                 <form onSubmit={handleCreateUser}>
                     <div className="">
                         <input type="text" name='fullName' className="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder="Full Name " />
@@ -58,18 +65,13 @@ const CreateUser = () => {
                     </div>
 
                     <div className="flex justify-center my-6">
-                        <button type='submit' className=" rounded-full  p-3 w-full sm:w-56   bg-gradient-to-r from-sky-600  to-teal-300 text-white text-lg font-semibold " >
+                        <button type='submit' className=" rounded-full  p-3 w-full sm:w-56
+                           bg-gradient-to-r from-gray-400  to-gray-700 text-white  text-lg font-semibold " >
                             Create User
                         </button>
                     </div>
                 </form>
-                <div className="back_to_user_btn_area">
-                    <Link to="/users">
-                        <button type="button" className="py-2 px-4 my-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                            Show User Data
-                        </button>
-                    </Link>
-                </div>
+
             </div>
         </div>
     );

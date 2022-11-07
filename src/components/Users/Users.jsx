@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import UsersTd from './UsersTd';
 
 const Users = () => {
@@ -9,10 +10,45 @@ const Users = () => {
         fetch(`http://localhost:5000/users`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setUsers(data)
             })
     }, [])
+
+    // ---> handle delete user info
+    const handleDeleteUserInfo = (id) => {
+        //   ---> alert
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // ---> delete user data
+                fetch(`http://localhost:5000/users/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            const remainingUser = users.filter(user => user._id !== id);
+                            setUsers(remainingUser)
+                        }
+                    })
+                // --->sweet alert (delete success msg)
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+
+
+    }
     return (
 
         <div className="container mx-auto px-4 sm:px-8 max-w-3xl h-screen">
@@ -54,7 +90,11 @@ const Users = () => {
                             </thead>
                             <tbody>
                                 {
-                                    users.map(user => <UsersTd key={user._id} user={user} />)
+                                    users.map(user => <UsersTd
+                                        key={user._id}
+                                        user={user}
+                                        handleDeleteUserInfo={handleDeleteUserInfo}
+                                    />)
                                 }
                             </tbody>
                         </table>

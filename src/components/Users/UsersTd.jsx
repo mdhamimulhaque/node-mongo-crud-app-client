@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { HiOutlinePencilAlt, HiOutlineTrash } from "react-icons/hi";
 
-const UsersTd = ({ user }) => {
-    const { name, phone, photoUrl, email } = user;
+const UsersTd = ({ user, handleDeleteUserInfo }) => {
+    const { _id, name, phone, photoUrl, email } = user;
     return (
         <>
             <tr>
@@ -34,7 +34,10 @@ const UsersTd = ({ user }) => {
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                     <div className="flex gap-4 font-semibold text-2xl cursor-pointer">
                         <span className='text-indigo-600 hover:text-indigo-700'><HiOutlinePencilAlt /></span>
-                        <span className='text-red-600 hover:text-red-700'><HiOutlineTrash /></span>
+                        <span
+                            className='text-red-600 hover:text-red-700'
+                            onClick={() => handleDeleteUserInfo(_id)}
+                        ><HiOutlineTrash /></span>
                     </div>
                 </td>
             </tr>

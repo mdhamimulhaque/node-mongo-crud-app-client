@@ -51,11 +51,10 @@ const Registration = () => {
                             </div>
 
                             <div className="mb-6 text-center">
-                                <button
-                                    className="w-full px-4 py-2 font-bold text-white bg-gray-900 rounded-full hover:bg-gray-700 focus:outline-none focus:shadow-outline"
-                                    type="button"
-                                >
-                                    Register Account
+                                <button type="submit" className="w-full px-4 py-3 text-base font-semibold text-center text-white transition duration-200 ease-in bg-gray-900 shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2">
+                                    <span className="w-full">
+                                        Registration
+                                    </span>
                                 </button>
                             </div>
                             <hr className="mb-6 border-t" />
