@@ -1,43 +1,75 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const CreateUser = () => {
-    return (
-        <div class="w-full h-screen overflow-scroll block h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-4 flex items-center justify-center" >
 
-            <div class="bg-white py-6 px-10 sm:max-w-md w-full ">
-                <div class="sm:text-3xl text-2xl font-semibold text-center text-sky-600  mb-12">
+
+    const handleCreateUser = (e) => {
+        e.preventDefault();
+        const form = e.target;
+
+        const name = form.fullName.value;
+        const profession = form.profession.value;
+        const phone = form.phone.value;
+        const photoUrl = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        const user = { name, profession, phone, photoUrl, email }
+
+        fetch(`http://localhost:5000/users`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('User create successfully');
+                    form.reset();
+                }
+            })
+
+    }
+
+    return (
+        <div className="w-full h-screen overflow-scroll block h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-4 flex items-center justify-center" >
+
+            <div className="bg-white py-6 px-10 sm:max-w-md w-full ">
+                <div className="sm:text-3xl text-2xl font-semibold text-center text-sky-600  mb-12">
                     Create User
                 </div>
-                <div class="">
-                    <div class="">
-                        <input type="text" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder="Full Name " />
+                <form onSubmit={handleCreateUser}>
+                    <div className="">
+                        <input type="text" name='fullName' className="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder="Full Name " />
                     </div>
-                    <div class="">
-                        <input type="text" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder="Profession" />
+                    <div className="">
+                        <input type="text" name="profession" className="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder="Profession" />
                     </div>
-                    <div class="">
-                        <input type="text" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder=" Phone Number " />
+                    <div className="">
+                        <input type="text" name="phone" className="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder=" Phone Number " />
                     </div>
-                    <div class="">
-                        <input type="text" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder="Photo URL " />
+                    <div className="">
+                        <input type="text" name="photoURL" className="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder="Photo URL " />
                     </div>
                     <div>
-                        <input type="email" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8" placeholder="Your Email" />
+                        <input type="email" name="email" className="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8" placeholder="Your Email" />
                     </div>
-                    <div class="">
-                        <input type="password" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder="Password " />
+                    <div className="">
+                        <input type="password" name='password' className="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder="Password " />
                     </div>
 
-                    <div class="flex justify-center my-6">
-                        <button class=" rounded-full  p-3 w-full sm:w-56   bg-gradient-to-r from-sky-600  to-teal-300 text-white text-lg font-semibold " >
+                    <div className="flex justify-center my-6">
+                        <button type='submit' className=" rounded-full  p-3 w-full sm:w-56   bg-gradient-to-r from-sky-600  to-teal-300 text-white text-lg font-semibold " >
                             Create User
                         </button>
                     </div>
-                </div>
-                <div className="back_to_user_btn_area text-center">
+                </form>
+                <div className="back_to_user_btn_area">
                     <Link to="/users">
-                        <button type="button" class="py-2 px-4 my-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                        <button type="button" className="py-2 px-4 my-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                             Show User Data
                         </button>
                     </Link>
