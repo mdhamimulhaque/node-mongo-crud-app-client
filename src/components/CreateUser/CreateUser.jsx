@@ -9,13 +9,12 @@ const CreateUser = () => {
         const form = e.target;
 
         const name = form.fullName.value;
-        const profession = form.profession.value;
         const phone = form.phone.value;
         const photoUrl = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
 
-        const user = { name, profession, phone, photoUrl, email }
+        const user = { name, phone, photoUrl, email }
 
         fetch(`http://localhost:5000/users`, {
             method: 'POST',
@@ -44,9 +43,6 @@ const CreateUser = () => {
                 <form onSubmit={handleCreateUser}>
                     <div className="">
                         <input type="text" name='fullName' className="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder="Full Name " />
-                    </div>
-                    <div className="">
-                        <input type="text" name="profession" className="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder="Profession" />
                     </div>
                     <div className="">
                         <input type="text" name="phone" className="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder=" Phone Number " />
