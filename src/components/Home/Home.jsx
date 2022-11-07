@@ -3,6 +3,7 @@ import img1 from "../../img/crud-gif/create.gif";
 import img2 from "../../img/crud-gif/read.gif";
 import img3 from "../../img/crud-gif/update.gif";
 import img4 from "../../img/crud-gif/delete.gif";
+import { Link } from 'react-router-dom';
 
 const homePageData = [
     {
@@ -31,7 +32,7 @@ const Home = () => {
     return (
         <section className="bg-white dark:bg-gray-900 h-screen w-full flex justify-center items-center">
 
-            <div className="container px-6  mx-auto">
+            <div className="container px-6 mx-auto">
                 <h2 className="text-5xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">Node Mongo CRUD App</h2>
 
                 <div className="grid gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -47,6 +48,13 @@ const Home = () => {
                         )
                     }
 
+                </div>
+                <div className="btn_area text-center">
+                    <Link to='/users'>
+                        <button class="px-6  py-2 mt-10 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                            get started
+                        </button>
+                    </Link>
                 </div>
             </div>
         </section>
