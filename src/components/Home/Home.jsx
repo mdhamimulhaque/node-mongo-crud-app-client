@@ -30,11 +30,17 @@ const homePageData = [
 
 const Home = () => {
     return (
-        <section className="bg-white dark:bg-gray-900 h-screen w-full flex justify-center items-center">
+        <section className="bg-white lg:h-screen w-full flex justify-center items-center py-3">
 
             <div className="container px-6 mx-auto">
-                <h2 className="text-5xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">Node Mongo CRUD App</h2>
-
+                <h2 className="text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl ">Node Mongo CRUD App</h2>
+                <div className="btn_area text-center">
+                    <Link to='/users'>
+                        <button className="px-6  py-2 mt-10 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                            get started
+                        </button>
+                    </Link>
+                </div>
                 <div className="grid gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {
                         homePageData.map(data =>
@@ -48,13 +54,6 @@ const Home = () => {
                         )
                     }
 
-                </div>
-                <div className="btn_area text-center">
-                    <Link to='/users'>
-                        <button class="px-6  py-2 mt-10 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-                            get started
-                        </button>
-                    </Link>
                 </div>
             </div>
         </section>

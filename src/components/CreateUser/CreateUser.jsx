@@ -12,7 +12,6 @@ const CreateUser = () => {
         const phone = form.phone.value;
         const photoUrl = form.photoURL.value;
         const email = form.email.value;
-        const password = form.password.value;
 
         const user = { name, phone, photoUrl, email }
 
@@ -38,7 +37,7 @@ const CreateUser = () => {
 
             <div className="bg-white py-6 px-10 sm:max-w-md w-full ">
                 <div className="sm:text-3xl text-2xl font-semibold text-center text-sky-600  mb-12">
-                    Create User
+                    Add User Info
                 </div>
                 <div className="back_to_user_btn_area text-right">
                     <Link to="/users">
@@ -60,14 +59,10 @@ const CreateUser = () => {
                     <div>
                         <input type="email" name="email" className="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8" placeholder="Your Email" />
                     </div>
-                    <div className="">
-                        <input type="password" name='password' className="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8" placeholder="Password " />
-                    </div>
 
                     <div className="flex justify-center my-6">
-                        <button type='submit' className=" rounded-full  p-3 w-full sm:w-56
-                           bg-gradient-to-r from-gray-400  to-gray-700 text-white  text-lg font-semibold " >
-                            Create User
+                        <button type="submit" className="py-2 px-4 my-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                            Add User Info
                         </button>
                     </div>
                 </form>
